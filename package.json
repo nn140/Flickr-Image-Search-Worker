@@ -1,0 +1,43 @@
+{
+	"name": "worker-template",
+	"description": "A template for building a React application with Vite, Hono, and Cloudflare Workers",
+	"cloudflare": {
+		"label": "Worker Template",
+		"products": [
+			"Workers"
+		],
+		"categories": [],
+		"publish": true
+	},
+	"dependencies": {
+		"@hono/vite-build": "^1.9.2",
+		"@hono/vite-dev-server": "^0.24.1",
+		"@vitejs/plugin-react-swc": "^4.2.3",
+		"hono": "4.11.7",
+		"honox": "^0.1.53",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.3.13",
+		"@swc/core": "^1.15.11",
+		"@types/node": "^25.2.0",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"rimraf": "^6.1.2",
+		"typescript": "5.9.3",
+		"vite": "^7.3.1",
+		"wrangler": "^4.61.1"
+	},
+	"private": true,
+	"scripts": {
+		"build": "tsc -b && vite build",
+		"cf-typegen": "wrangler types",
+		"check": "tsc && vite build && wrangler deploy --dry-run",
+		"clean": "rimraf .wrangler dist",
+		"deploy": "wrangler deploy",
+		"dev": "vite"
+	},
+	"type": "module",
+	"packageManager": "yarn@4.12.0"
+}
