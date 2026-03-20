@@ -8,7 +8,7 @@
 	"files": {
 		"ignoreUnknown": false,
 		"includes": [
-			"./src/**/*.{ts,tsx,js,jsx,html,css,json}",
+			"./app/**/*.{ts,tsx,js,jsx,html,css,json}",
 			"./assets/**/*.{ts,tsx,js,jsx,html,css,json}",
 			"./biome.json",
 			"./tsup.config.ts",

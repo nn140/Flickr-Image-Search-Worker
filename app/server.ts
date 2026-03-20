@@ -2,8 +2,13 @@ import { Hono } from 'hono';
 import { showRoutes } from 'hono/dev';
 import { createApp } from 'honox/server';
 
-const base = new Hono<{ Bindings: Env }>({ strict: true });
-const app = createApp<{ Bindings: Env }>({ trailingSlash: false, app: base });
+interface Environment {
+	Bindings: Env;
+	Variables: {};
+}
+
+const base = new Hono<Environment>({ strict: true });
+const app = createApp<Environment>({ trailingSlash: false, app: base });
 
 showRoutes(app);
 

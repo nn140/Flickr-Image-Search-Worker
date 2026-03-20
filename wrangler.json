@@ -4,8 +4,14 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "bracketed-hono-template",
+	"name": "nn140-flickr-image-search",
 	"main": "./dist/index.js",
+	"routes": [
+		{
+			"custom_domain": true,
+			"pattern": "flickr.apis.nn140.uk"
+		}
+	],
 	"compatibility_date": "2025-10-08",
 	"compatibility_flags": [
 		"nodejs_compat"
@@ -16,12 +22,29 @@
 	"upload_source_maps": true,
 	"assets": {
 		"directory": "./dist"
-	}
+	},
+	"kv_namespaces": [
+		{
+			"binding": "FLICKR_IMG_CACHE",
+			"id": "238d96e5d98649f0980c6c72cb8f8097",
+			"remote": true
+		}
+	],
+	"ratelimits": [
+		{
+			"name": "RATE_LIMITER",
+			"namespace_id": "1",
+			"simple": {
+				"limit": 15,
+				"period": 60
+			}
+		}
+	],
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
 	 */
-	// "placement": {  "mode": "smart" }
+	"placement": { "mode": "smart" }
 	/**
 	 * Bindings
 	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
